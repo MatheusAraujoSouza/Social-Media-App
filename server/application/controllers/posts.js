@@ -1,6 +1,5 @@
-import e from 'express';
-import PostService from '../service/postService.js';
-const postService = new PostService();
+import container from '../../app.js';
+const postService = container.resolve('PostService');
 
 
 export const getPosts = async (req, res) => {
