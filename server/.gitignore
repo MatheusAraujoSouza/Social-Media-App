@@ -1,0 +1,122 @@
+# Ignore Node.js related files and directories
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Ignore editor and IDE specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.sln
+*.suo
+*.user
+*.suo
+*.sdf
+*.dbmdl
+[Tt]humbs.db
+[Bb]ackup(?:s|)
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore build output
+/build/
+
+# Ignore configuration files
+.env
+
+# Ignore your API keys and other secrets
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+.env.local
+
+# Ignore compiled JavaScript files
+/dist/
+
+# Ignore various build directories
+/build/
+.eslintcache/
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Ignore yarn v1
+.yarn/
+.yarn-integrity
+
+# Ignore yarn v2
+.pnp/
+.yarn/
+yarn-error.log
+yarn.lock
+
+# Ignore pnpm
+node_modules/.pnpm-debug.log
+pnpm-lock.yaml
+shrinkwrap.yaml
+
+# Ignore package manager directories
+.pnpm
+bower_components/
+jspm_packages/
+
+# Ignore coverage directory if you're using a code coverage tool
+coverage/
+
+# Ignore local .env files
+.env.local
+.env.*.local
+
+# Ignore .log files and .log directory
+*.log
+log/
+
+# Ignore end-to-end test videos
+videos/
+
+# Ignore .pids and .lock files
+*.pid
+*.lock
+
+# Ignore Mac-specific files
+.DS_Store
+
+# Ignore Windows-specific files and folders
+Thumbs.db
+Desktop.ini
+
+# Ignore Vim and Emacs swap files
+*.swp
+*~
+# .npm directories
+.npm/
+
+# Ignore ESLint cache
+.eslintcache/
+
+# Ignore TSLint cache
+tslint/
+
+# Ignore Parcel cache
+.cache/
+dist/
+
+# Ignore build output
+/dist/
+/out/
+
+# Ignore logs and other runtime data
+/logs/

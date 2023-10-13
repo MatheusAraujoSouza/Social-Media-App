@@ -1,0 +1,22 @@
+# Use an official MongoDB image as the base image
+FROM mongo:latest
+
+# Set environment variables, if needed
+# ENV MONGO_INITDB_ROOT_USERNAME=admin
+# ENV MONGO_INITDB_ROOT_PASSWORD=password
+
+# Expose the default MongoDB port
+EXPOSE 27017
+
+# You can add your custom MongoDB configuration here, if necessary
+# COPY ./mongod.conf /etc/mongod.conf
+
+# Optionally, you can provide a custom entrypoint script
+# COPY ./entrypoint.sh /entrypoint.sh
+# RUN chmod +x /entrypoint.sh
+
+# Define a custom working directory, if needed
+# WORKDIR /usr/src/app
+
+# Command to run when the container starts
+# CMD ["mongod"]
