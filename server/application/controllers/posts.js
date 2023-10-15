@@ -11,6 +11,17 @@ export const getPosts = async (req, res) => {
       }
 }
 
+
+export const getPostsById = async (req, res) => {
+  try {
+      const { id } = req.params;
+      const postMessages = await postService.getPostsById(id);
+      res.status(200).json(postMessages);
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+    }
+}
+
 export const createPost = async (req, res) => {
     const post = req.body;
     try {

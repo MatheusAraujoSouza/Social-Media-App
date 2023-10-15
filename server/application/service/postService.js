@@ -1,11 +1,20 @@
-import PostMessage from '../../domain/models/postMessage.js';
-import AutoMapper from '../automapper/automapper'; 
+import PostMessage from '../../domain/models/postMessages.js';
+import AutoMapper from '../../application/automapper/automapper.js'; 
 
 class PostService {
   async getPosts() {
     try {
       const posts = await PostMessage.find();
       return posts.map((post) => AutoMapper.mapToPostDto(post));
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
+  async getPostsById(id) {
+    try {
+      const post = await PostMessage.findById(id);
+      return AutoMapper.mapToPostDto(post);
     } catch (error) {
       throw new Error(error.message);
     }
@@ -22,28 +31,32 @@ class PostService {
   }
 
   async updatePost(id, post) {
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new Error('No post with that id');
+    try{
+      const updatedPost = await PostMessage.findByIdAndUpdate(id, { ...post, _id: id }, { new: true });
+      return updatedPost;
     }
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, { ...post, _id: id }, { new: true });
-    return updatedPost;
+    catch(error){
+      throw new Error(error.message);
+    }
   }
 
   async deletePost(id) {
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new Error('No post with that id');
+    try{
+      await PostMessage.findByIdAndRemove(id);
+      return { message: 'Post deleted successfully' };
+    }catch{
+      throw new Error(error.message);
     }
-    await PostMessage.findByIdAndRemove(id);
-    return { message: 'Post deleted successfully' };
   }
 
   async likePost(id) {
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new Error('No post with that id');
+    try{
+      const post = await PostMessage.findById(id);
+      const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new: true });
+      return updatedPost;
+    }catch{
+      throw new Error(error.message);
     }
-    const post = await PostMessage.findById(id);
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new: true });
-    return updatedPost;
   }
 }
 

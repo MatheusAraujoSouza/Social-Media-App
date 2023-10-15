@@ -1,4 +1,4 @@
-import PostMessage from '../../domain/models/postMessage.js';
+import PostMessage from '../../domain/models/postMessages.js';
 
 class AutoMapper {
   static mapToPostDto(post) {

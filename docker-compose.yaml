@@ -1,0 +1,38 @@
+version: '3.9'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongo-container
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./DB/Volume:/data/db
+    networks:
+      - app-network
+    environment:
+      MONGO_URI: mongodb://mongo-container:27017
+
+  api:
+    build:
+      context: ./server 
+      dockerfile: dockerfile
+    container_name: server-container
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    depends_on:
+      - mongodb
+    environment:
+      API_PORT: 3000
+      MONGO_URI: mongodb://mongo-container:27017
+    volumes:
+      - ./server/application:/app/application
+      - ./server/domain:/app/domain
+      - ./server/infrastructure:/app/infrastructure
+      - ./server/libray:/app/libray
+    command: npm start  
+
+networks:
+  app-network:
+    driver: bridge
