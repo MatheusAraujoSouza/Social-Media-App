@@ -26,6 +26,7 @@ services:
     environment:
       API_PORT: 3000
       MONGO_URI: mongodb://mongo-container:27017
+      JWT_SECRET: "secret"
     volumes:
       - ./server/application:/app/application
       - ./server/domain:/app/domain
