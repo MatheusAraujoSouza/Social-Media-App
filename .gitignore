@@ -7,7 +7,6 @@ package-lock.json
 yarn.lock
 
 # Ignore editor and IDE specific files
-.vscode/
 .idea/
 *.suo
 *.ntvs*

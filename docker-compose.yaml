@@ -18,13 +18,14 @@ services:
       dockerfile: dockerfile
     container_name: server-container
     ports:
-      - "3000:3000"
+     - 3000:80
+     - 9229:9229
     networks:
       - app-network
     depends_on:
       - mongodb
     environment:
-      API_PORT: 3000
+      API_PORT: 80
       MONGO_URI: mongodb://mongo-container:27017
       JWT_SECRET: "secret"
     volumes:
@@ -32,7 +33,7 @@ services:
       - ./server/domain:/app/domain
       - ./server/infrastructure:/app/infrastructure
       - ./server/libray:/app/libray
-    command: npm start  
+    command: ["npm", "run", "start:debug"]
 
 networks:
   app-network:
