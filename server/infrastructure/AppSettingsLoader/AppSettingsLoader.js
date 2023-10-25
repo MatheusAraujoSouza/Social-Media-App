@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const JSON5 = require('json5');
+import fs from 'fs';
+import path from 'path';
+import JSON5 from 'json5';
 
 class AppSettingsLoader {
   constructor(configPath, options = {}) {
@@ -74,4 +74,4 @@ class AppSettingsLoader {
   }
 }
 
-module.exports = AppSettingsLoader;
+export default AppSettingsLoader;

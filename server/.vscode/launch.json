@@ -1,22 +1,35 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
-        {
-            "address": "localhost",
-            "localRoot": "${workspaceFolder}",
-            "name": "Attach to Remote Docker",
-            "port": 9229,
-            "remoteRoot": "/app",
-            "request": "attach",
-            "skipFiles": [
-                "<>/**"
-            ],
-            "type": "node",
-            "restart": true
-        }
+      {
+        "name": "Run Locally",
+        "type": "node",
+        "request": "launch",
+        "program": "${workspaceFolder}/index.js",
+        "args": [],
+        "runtimeExecutable": "node",
+        "localRoot": "${workspaceFolder}",
+        "stopOnEntry": false,
+        "restart": true,
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "openOnSessionStart",
+        "sourceMaps": true,
+        "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+      },
+      {
+        "name": "Attach to Remote Docker",
+        "type": "node",
+        "request": "attach",
+        "address": "localhost",
+        "port": 9229,
+        "localRoot": "${workspaceFolder}",
+        "remoteRoot": "/app",
+        "skipFiles": [
+          "<>/**"
+        ],
+        "type": "node",
+        "restart": true
+      }
     ]
-}
+  }
+  

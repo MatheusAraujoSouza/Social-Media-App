@@ -10,7 +10,7 @@ services:
     networks:
       - app-network
     environment:
-      MONGO_URI: mongodb://mongo-container:27017
+      MONGO_URI: mongodb://mongo-container:27017 
 
   api:
     build:
@@ -26,8 +26,8 @@ services:
       - mongodb
     environment:
       API_PORT: 80
-      MONGO_URI: mongodb://mongo-container:27017
-      JWT_SECRET: "secret"
+      API_MONGO_URI: mongodb://mongo-container:27017
+      API_JWT_SECRET: "secret"
     volumes:
       - ./server/application:/app/application
       - ./server/domain:/app/domain

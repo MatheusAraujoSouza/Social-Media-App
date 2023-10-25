@@ -11,7 +11,7 @@ class PostService {
     }
   }
 
-  async getPostsById(id) {
+  async getPostById(id) {
     try {
       const post = await PostMessage.findById(id);
       return AutoMapper.mapToPostDto(post);
