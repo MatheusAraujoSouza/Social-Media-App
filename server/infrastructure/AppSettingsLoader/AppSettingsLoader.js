@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import JSON5 from 'json5';
+import { fileURLToPath } from 'url';
 
 class AppSettingsLoader {
   constructor(configPath, options = {}) {
@@ -24,6 +25,8 @@ class AppSettingsLoader {
   }
 
   getAppSettingsFromConfigurationFile() {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
     const configFilePath = path.join(__dirname, this.configPath);
 
     try {
@@ -52,6 +55,7 @@ class AppSettingsLoader {
     const keyPrefix = `${this.options.configPropertyEnvironmentVariablePrefix}${key}`
       .toUpperCase()
       .replace(/[-./]/g, '_');
+      console.log(keyPrefix);
     const keyValue = process.env[keyPrefix];
 
     if (keyValue !== undefined) {
