@@ -1,4 +1,6 @@
 import jwt from 'jsonwebtoken';
+import container from '../../app.js';
+const Appsettings = container.resolve('AppSettingsLoader');
 
 const auth = (req, res, next) => {
   try {
@@ -8,7 +10,7 @@ const auth = (req, res, next) => {
       return res.status(401).json({ message: 'Authorization token missing' });
     }
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, decodedData) => {
+    jwt.verify(token, Appsettings.appSettings.JWT_SECRET, (err, decodedData) => {
       if (err) {
         return res.status(401).json({ message: 'Token verification failed' });
       }
